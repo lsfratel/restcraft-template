@@ -1,0 +1,59 @@
+[project]
+name = "restcraft-template"
+version = "0.0.1"
+description = "Default template for PDM package"
+authors = [
+    {name = "Lucas Santana", email = "lsfratel@gmail.com"},
+]
+dependencies = [
+    "restcraft",
+    "gunicorn",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.dev-dependencies]
+test = [
+    "webtest>=3.0.0",
+]
+lint = [
+    "ruff>=0.4.1",
+]
+
+[tool.pdm.scripts]
+_.env_file = ".env"
+dev = "gunicorn --access-logfile - --reload --threads 2 restcraft_app.wsgi:application"
+test = "python -m unittest"
+
+[tool.ruff]
+line-length = 100
+
+select = [
+    "B",
+    "C4",
+    "E",
+    "F",
+    "PGH",
+    "RUF",
+    "W",
+    "YTT",
+]
+
+extend-ignore = [
+    "B018",
+    "B019",
+    "RUF012"
+]
+
+target-version = "py310"
+
+[tool.ruff.mccabe]
+max-complexity = 10
+
+[tool.ruff.isort]
+known-first-party = ["restcraft_app"]
