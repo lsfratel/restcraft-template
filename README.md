@@ -17,6 +17,13 @@ VIEWS = {
 os.environ.setdefault('RESTCRAFT_SETTINGS_MODULE', 'YOUR_PROJECT_NAME.settings')
 ```
 
+or you can use this one line command:
+
+```bash
+# Run this command inside the clonned template
+mv restcraft_app YOUR_PROJECT_NAME && find . -type f -exec sed -i 's/restcraft_app/YOUR_PROJECT_NAME/g' {} +
+```
+
 Then install the dependencies.
 ```bash
 pdm install
