@@ -13,6 +13,11 @@ VIEWS = {
 
 MIDDLEWARES = {}
 
+SERVICES = {
+    "transient": (
+        "restcraft_app.services.example_service.MyExampleService",
+    )
+}
 
 try:
     from .my_settings import *  # type: ignore reportMissingImports  # noqa: F403
